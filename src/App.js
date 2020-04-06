@@ -45,46 +45,42 @@ class App extends Component {
       country
     } = this.state;
     console.log(data);
-    return ( <
-        Fragment > {
-          this.state.loading ? ( < center > < Spinner
-
-            /
-            >
-            <
-            /center > ) : ( < div className = {
-            styles.container
-          } >
+    return ( < Fragment > {
+        this.state.loading ? ( < center > < Spinner / >
           <
-          img className = {
-            styles.image
-          }
-          alt = "No Image Found"
-          src = {
-            Image
-          }
-          /> <
-          Cards data = {
-            data
-          }
-          /> <
-          Countrypicker handleCountryChange = {
-            this.handleCountryChange
-          }
-          /> <
-          Charts data = {
-            data
-          }
-          country = {
-            country
-          }
-          />  <
-          Footer / > < /
-          div >
+          /center > ) : ( < div className = {
+          styles.container
+        } >
+        <
+        img className = {
+          styles.image
+        }
+        alt = "No Image Found"
+        src = {
+          Image
+        }
+        />  <
+        Cards data = {
+          data
+        }
+        /> <
+        Countrypicker handleCountryChange = {
+          this.handleCountryChange
+        }
+        /> <
+        Charts data = {
+          data
+        }
+        country = {
+          country
+        }
+        />  <
+        Footer / >
+        <
+        /div >
 
-        )
-      } <
-      /Fragment>
+      )
+    } < /Fragment>
   );
 }
 }
