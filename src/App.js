@@ -1,26 +1,92 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {
+  Component,
+  Fragment
+} from "react";
+import {
+  Cards,
+  Charts,
+  Countrypicker
+} from "./components/index";
+import {
+  fetchData
+} from "./api";
+import Spinner from "./components/spinner/spinner";
+import Image from "./images/image.png";
+import Footer from "./components/footer/footer"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import styles from "./App.module.css";
+
+class App extends Component {
+  state = {
+    loading: false,
+    data: {},
+    country: "",
+  };
+  handleCountryChange = async (country) => {
+    const fetchedData = await fetchData(country);
+    this.setState({
+      data: fetchedData,
+      country: country,
+    });
+  };
+  async componentDidMount() {
+    this.setState({
+      loading: true,
+    });
+    const fetchedData = await fetchData();
+    this.setState({
+      loading: false,
+      data: fetchedData,
+    });
+  }
+  render() {
+    const {
+      data,
+      country
+    } = this.state;
+    console.log(data);
+    return ( <
+        Fragment > {
+          this.state.loading ? ( < center > < Spinner
+
+            /
+            >
+            <
+            /center > ) : ( < div className = {
+            styles.container
+          } >
+          <
+          img className = {
+            styles.image
+          }
+          alt = "No Image Found"
+          src = {
+            Image
+          }
+          /> <
+          Cards data = {
+            data
+          }
+          /> <
+          Countrypicker handleCountryChange = {
+            this.handleCountryChange
+          }
+          /> <
+          Charts data = {
+            data
+          }
+          country = {
+            country
+          }
+          />  <
+          Footer / > < /
+          div >
+
+        )
+      } <
+      /Fragment>
   );
+}
 }
 
 export default App;

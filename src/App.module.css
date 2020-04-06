@@ -1,0 +1,38 @@
+body {
+    background-color: rgb(250, 250, 250);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    display: block;
+    width: 20%;
+    margin: 1rem;
+}
+
+.Spinner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+
+@media (max-width: 770px) {
+    image {
+        width: 60%;
+    }
+
+    .Spinner {
+        height: 100vh;
+
+    }
+
+
+
+}
